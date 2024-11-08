@@ -1,0 +1,73 @@
+<h1>Mountains</h1>
+
+<div id="mountains"></div>
+
+<script>
+  const MOUNTAINS = [
+    {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+    {name: "Everest", height: 8848, place: "Nepal"},
+    {name: "Mount Fuji", height: 3776, place: "Japan"},
+    {name: "Vaalserberg", height: 323, place: "Netherlands"},
+    {name: "Denali", height: 6168, place: "United States"},
+    {name: "Popocatepetl", height: 5465, place: "Mexico"},
+    {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+  ];
+
+  // Your code here
+  let mountains = document.querySelector("#mountains");
+
+  // Create table and display table under div
+  const table = document.createElement("table");
+  mountains.appendChild(table);
+
+  // Create row
+  const row = document.createElement("tr");
+  
+  // Create header with obj key property as text nodes
+  const keys = Object.keys(MOUNTAINS[0]);
+  
+  console.log(keys);
+  console.log(keys[0]);
+
+  const header = [];
+  const headerText = [];
+  
+  // add header and headerText values to arrays
+  for (let i = 0 ; i < keys.length ; i++) {
+    header.push(document.createElement("th"));
+    headerText.push(document.createTextNode(keys[i]));
+  }
+  
+  // append each header array value to each headerText value
+  // then append each header to row
+  for (let i = 0 ; i < header.length ; i++) {
+     header[i].appendChild(headerText[i]);
+     row.appendChild(header[i]);
+  }
+   
+  // Append row into table
+  table.appendChild(row);
+  
+  for (let i = 0 ; i < MOUNTAINS.length ; i++) {
+    // Create new row
+    let newRow = '';
+    newRow = document.createElement("tr");
+
+    // add data for each row 
+    let newData = '';
+    let newText = '';
+    
+    for (let j = 0 ; j < Object.values(MOUNTAINS[i]).length ; j++) {
+     
+      newData = document.createElement("td");
+      newText = document.createTextNode(Object.values(MOUNTAINS[i])[j]);
+      newData.appendChild(newText);
+
+      // Append data into row
+      newRow.appendChild(newData);
+    }
+    // Append rows into table
+    table.appendChild(newRow);
+  }
+  
+</script>
