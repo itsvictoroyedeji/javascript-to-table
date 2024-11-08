@@ -48,9 +48,9 @@
   // Append row into table
   table.appendChild(row);
   
+  // Create new row (for the data)
+  let newRow = '';
   for (let i = 0 ; i < MOUNTAINS.length ; i++) {
-    // Create new row
-    let newRow = '';
     newRow = document.createElement("tr");
 
     // add data for each row 
@@ -61,9 +61,16 @@
      
       newData = document.createElement("td");
       newText = document.createTextNode(Object.values(MOUNTAINS[i])[j]);
+
+      // right-align values that contain numbers
+      if (typeof Object.values(MOUNTAINS[i])[j] == 'number') {
+        newData.style.textAlign = "right";
+      }
+      
+      // append text to data cell
       newData.appendChild(newText);
 
-      // Append data into row
+      // Append data cell into row
       newRow.appendChild(newData);
     }
     // Append rows into table
